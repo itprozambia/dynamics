@@ -1,0 +1,438 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healthy Breath</title>
+
+<style>
+:root {
+    --primary: #0d9488;
+    --secondary: #14b8a6;
+    --accent: #22c55e;
+    --dark: #0f172a;
+    --light: #f1f5f9;
+    --white: #ffffff;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #ffffff, #eef2f7);
+    color: var(--dark);
+}
+
+/* HEADER */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.75);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 50px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--primary);
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+/* MOBILE MENU */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+.other-articles {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    margin-top: 30px;
+    font-size: 1.3rem;
+}
+.other-articles h1 {
+    padding: 20px;
+    color: #14b8a6
+}
+
+.fikope{
+    padding: 20px;
+    text-align: center;
+}
+.fikope img {
+    border-radius: 3px;
+    object-fit: contain;
+    object-position: top;
+    width: 100%;
+}
+@media(max-width:768px){
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 250px;
+        background: white;
+        flex-direction: column;
+        padding-top: 80px;
+        transition: 0.4s ease;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    }
+
+    nav.active {
+        right: 0;
+    }
+
+    nav a {
+        padding: 15px 25px;
+        margin: 0;
+        border-bottom: 1px solid #eee;
+    }
+}
+
+/* HERO */
+.hero {
+    height: 80vh;
+    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.3)),
+                url('images/doc.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    max-width: 700px;
+}
+
+.hero p {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* BUTTONS */
+.hero-buttons {
+    margin-top: 25px;
+}
+
+.hero-buttons a {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 5px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: white;
+    color: var(--primary);
+}
+
+.btn-primary:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.btn-outline {
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: var(--primary);
+}
+
+/* MAIN */
+#main-container {
+    padding:0;
+    max-width: 100%;
+    margin: auto;
+}
+
+/* SLIDER (CONTINUOUS MOTION) */
+.slider {
+    overflow: hidden;
+    margin-bottom: 40px;
+    max-width: 500px;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    margin-left: 30%;
+}
+
+.slides {
+    display: flex;
+    width: 100%;
+    animation: scroll 30s linear infinite;
+}
+
+.slide {
+    width: 300px;
+    flex-shrink: 0;
+    margin-right: 20px;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    min-height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.caption {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+/* CONTINUOUS SCROLL */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* SECTION TITLE */
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: var(--primary);
+    padding: 20px;
+}
+
+/* ARTICLES */
+.articles {
+    background: white;
+    margin-bottom: 1px;
+  
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.articles:hover {
+    transform: translateY(-5px);
+}
+
+.articles h2 {
+    padding: 18px;
+    font-size:medium;
+    color: var(--primary);
+    border-bottom: 1px solid #eee;
+}
+
+/* GRID */
+.content-holder {
+    display: grid;
+    grid-template-columns:1fr 520px;
+    gap: 25px;
+    padding: 25px;
+    align-items: center;
+}
+
+.content img {
+   max-width: 75%;
+    border-radius: 2px;
+   object-fit: cover;
+    object-position: top;
+}
+
+.content p {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 500px;
+    text-align: left;
+}
+
+.content span {
+    font-weight: bold;
+    color: var(--primary);
+}
+strong {
+    color: rgba(21, 160, 141, 0.705);
+    font-size: large;
+}
+
+@media(max-width:768px){
+    .content-holder {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+    #main-container {
+        width: 100%;
+    }
+
+    
+.content img {
+   max-width: 100%;
+    border-radius: 2px;
+   object-fit: cover;
+    object-position: top;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Healthy Breath</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="nav">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Devices</a>
+        <a href="#">Contact</a>
+        <a href="siup.html" class="SignUp" style="color: rgb(37, 145, 127);">Sign Up</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <div>
+        <h1>Breathe Better. Live Healthier.</h1>
+        <p>Your trusted guide to wellness and medical awareness.</p>
+
+        <div class="hero-buttons">
+            <a href="acp.html" class="btn-primary">Explore Articles</a>
+            <a href="siip.html" class="btn-outline">Sign in</a>
+        </div>
+    </div>
+</div>
+
+<div id="main-container">
+
+<div class="other-articles">
+    <h1>The Importance of Oxygen</h1>
+      
+            <p>Medical Oxygen is an essential drug used in the treatment of hypoxemia, pneumonia, COVID-19, and emergency care.</p>
+            <p>Proper oxygen levels ensure that your organs function efficiently and reduce fatigue.</p>
+             <div class="fikope"><img src="images/machinery.jpg" alt=""></div>
+            <p><span>Important:</span> Oxygen must always be prescribed by a medical professional to avoid serious complications.</p>
+
+    </div>
+</div>
+<!--End of other articles-->
+<h2 class="section-title">Health Insights</h2>
+
+<div class="articles">
+    <h2>Oxygen Sources</h2>
+    <div class="content-holder">
+        <div class="content">
+            <img src="images/concentrato.webp">
+        </div>
+        <div class="content">
+            <p>Oxygen delivery systems include concentrators, cylinders, and hospital pipelines.</p>
+            <p><span>Oxygen Concentrator:</span> A device that filters oxygen from ambient air and delivers purified oxygen for medical use.</p>
+        </div>
+    </div>
+
+<div class="articles">
+    <h2>low-flow mask</h2>
+    <div class="content-holder">
+        <div class="content">
+            <img src="images/kamask.png">
+        </div>
+        <div class="content">
+            <p>A Simple Face Mask (often called a "low-flow" mask) is a basic medical device used to deliver oxygen to patients who are breathing on their own but need a bit more support than a nasal cannula can support with up to 5-10 L/min (40% to 60% FiO2). </p>
+        </div>
+    </div>
+</div>
+
+<div class="articles">
+    <h2>Oxygen cylinders</h2>
+    <div class="content-holder">
+        <div class="content">
+            <img src="images/multi.jpg">
+        </div>
+        <div class="content">
+<p><strong>
+     Definition and Purpose</strong> 
+     <br>
+     Oxygen cylinders are high-pressure containers designed for the storage and transportation of oxygen gas. They are widely used in medical, industrial, and emergency settings to supply oxygen for respiration, combustion, and various technical processes.</p>
+
+<p><strong>
+     Components</strong> <br>
+     Key components of an oxygen cylinder include the cylinder body, valve, pressure regulator, flow meter, and protective cap. The valve controls gas release, while the regulator reduces high pressure to a usable level. The flow meter ensures accurate delivery of oxygen to the user.</p>
+
+<p><strong> Medical Applications:</strong>
+    <br> 
+    In healthcare, oxygen cylinders are used to provide supplemental oxygen to patients with respiratory conditions such as asthma, pneumonia, or chronic obstructive pulmonary disease (COPD). They are also essential in emergency care, surgery, and intensive care units.</p>
+
+
+
+<p><strong style="color: red;"> Safety Precautions</strong>
+    <br>
+    Oxygen supports combustion and can accelerate fires. Cylinders must be stored upright, secured properly, and kept away from heat sources, flammable materials, and oils/grease. Regular inspection for leaks and damage is critical.</p>
+
+
+
+<p><strong> Maintenance and Inspection:</strong>
+    <br> 
+    Regular maintenance includes checking for leaks, ensuring valves function properly, and verifying pressure levels. Periodic hydrostatic testing is required to confirm the cylinder’s structural integrity.</p>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+</div>
+
+<script>
+function toggleMenu() {
+    document.getElementById("nav").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
