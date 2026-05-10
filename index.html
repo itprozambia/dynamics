@@ -7,10 +7,6 @@
     <link rel="stylesheet" href="puplic.css">
     <style>
 
-
-
-
-
       .post-card:hover {
         background-color: rgba(128, 128, 128, 0.027);
         cursor: pointer;
@@ -76,6 +72,26 @@
   .pst-container{
     grid-template-columns:1fr;
   }
+
+ p {
+
+  width:100%;
+}
+.menu-toggle {
+        display: block;
+    }
+img {
+  border-radius:10px;
+}
+
+small {
+      padding:10px;
+      border-radius:5px;
+      display:block;
+      background-color:#218686;
+      color:white;
+    }
+
 }
 
     </style>
@@ -100,6 +116,7 @@
         <div class="hero-buttons">
             <a href="acp.html" class="btn-primary">Explore Articles</a>
             <a href="siip.html" class="btn-outline">Sign in</a>
+              <a href="newer.html" class="btn-outline">Change layout</a>
         </div>
     </div>
 </div>
@@ -190,7 +207,8 @@ function renderPosts(){
         <br><br>
 
         <small>
-        ${post.createdAt}
+	<p><b>Published: </b>${post.createdAt}</p>
+        
         </small>
 
         <br><br>
