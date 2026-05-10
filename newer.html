@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Oxytips | Medical Oxygen Awareness</title>
+
+<link rel="stylesheet" href="puplic.css" />
+
+<style>
+
+:root{
+  --primary:#0f766e;
+  --primary-light:#14b8a6;
+  --secondary:#f97316;
+  --dark:#0f172a;
+  --text:#334155;
+  --light:#ffffff;
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --border:#e2e8f0;
+  --shadow:0 10px 30px rgba(0,0,0,0.06);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+
+/* HEADER */
+
+header{
+  width:100%;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 2px 10px rgba(0,0,0,0.04);
+}
+
+nav{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 20px;
+}
+
+.logo{
+  font-size:1.5rem;
+  font-weight:bold;
+  color:var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.nav-links{
+  display:flex;
+  gap:25px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:var(--dark);
+  font-weight:600;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:var(--primary);
+}
+
+.SignUp{
+  color:var(--primary-light) !important;
+}
+
+/* HERO */
+
+.hero{
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+  background:
+    linear-gradient(rgba(15,23,42,0.7), rgba(15,23,42,0.7)),
+    url('images/hero2.webp');
+  background-size:cover;
+  background-position:center;
+  color:white;
+}
+
+.hero-content{
+  max-width:800px;
+}
+
+.hero h1{
+  font-size:4rem;
+  margin-bottom:20px;
+  line-height:1.1;
+}
+
+.hero p{
+  font-size:1.2rem;
+  margin-bottom:35px;
+  color:#e2e8f0;
+}
+
+.hero-buttons{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.btn-primary,
+.btn-outline{
+  padding:14px 28px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.3s ease;
+}
+
+.btn-primary{
+  background:var(--primary-light);
+  color:white;
+}
+
+.btn-primary:hover{
+  transform:translateY(-3px);
+  background:var(--primary);
+}
+
+.btn-outline{
+  border:2px solid white;
+  color:white;
+}
+
+.btn-outline:hover{
+  background:white;
+  color:var(--dark);
+}
+
+/* INFO SECTION */
+
+.other-articles{
+  max-width:1100px;
+  margin:70px auto;
+  background:white;
+  padding:40px;
+  border-radius:24px;
+  box-shadow:var(--shadow);
+}
+
+.other-articles h1{
+  color:var(--primary);
+  margin-bottom:20px;
+  font-size:2rem;
+}
+
+.other-articles p{
+  margin-bottom:15px;
+  font-size:1.05rem;
+}
+
+.other-articles span{
+  color:#dc2626;
+  font-weight:bold;
+}
+
+/* SECTION TITLE */
+
+.section-title{
+  text-align:center;
+  font-size:2.5rem;
+  margin-bottom:50px;
+  color:var(--dark);
+}
+
+/* POSTS */
+
+.card{
+  max-width:1200px;
+  margin:auto;
+  padding:0 20px 80px;
+}
+
+.posts-grid{
+  display:grid;
+  gap:35px;
+}
+
+.post-card{
+  background:var(--card);
+  border-radius:24px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  transition:0.4s ease;
+}
+
+.post-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.1);
+}
+
+.pst-container{
+  display:grid;
+  grid-template-columns:500px 1fr;
+  align-items:center;
+}
+
+.post-image{
+  width:100%;
+  height:100%;
+  max-height:450px;
+  object-fit:cover;
+  display:block;
+}
+
+.post-content{
+  padding:35px;
+}
+
+.post-category{
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:50px;
+  background:rgba(20,184,166,0.1);
+  color:var(--primary);
+  font-size:0.9rem;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+.post-title{
+  font-size:2rem;
+  color:var(--secondary);
+  margin-bottom:18px;
+  line-height:1.3;
+}
+
+.post-text{
+  color:var(--text);
+  margin-bottom:25px;
+  font-size:1rem;
+}
+
+.post-video{
+  width:100%;
+  border-radius:14px;
+  margin-top:10px;
+}
+
+small{
+  display:inline-block;
+  padding:10px 16px;
+  background:rgba(15,118,110,0.1);
+  border-radius:10px;
+  color:var(--primary);
+  font-weight:600;
+}
+
+/* EMPTY */
+
+.empty{
+  text-align:center;
+  background:white;
+  padding:50px;
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  font-size:1.1rem;
+}
+
+.logo div img {
+  object-fit: cover;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .pst-container{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:2.8rem;
+  }
+
+  .post-content{
+    padding:25px;
+  }
+
+  .post-title{
+    font-size:1.5rem;
+  }
+
+}
+
+@media(max-width:600px){
+
+  nav{
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .hero{
+    min-height:75vh;
+  }
+
+  .hero h1{
+    font-size:2.2rem;
+  }
+
+  .hero p{
+    font-size:1rem;
+  }
+
+  .other-articles{
+    padding:25px;
+    margin:40px 15px;
+  }
+
+  .section-title{
+    font-size:2rem;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+  <nav>
+
+    <div class="logo">
+       <div class="image"><img src="images/liqox.png" alt="" width="60" height="60" loading="lazy"></div>
+      <div class="company-name">OxyTips</div>
+    </div>
+
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Devices</a>
+      <a href="#">Contact</a>
+      <a href="siup.html" class="SignUp">Sign Up</a>
+    </div>
+
+  </nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <h1>Breathe Better. Live Healthier.</h1>
+
+    <p>
+      Your trusted guide to wellness, oxygen awareness,
+      and modern medical education.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="acp.html" class="btn-primary">
+        Add Articles
+      </a>
+
+      <a href="siip.html" class="btn-outline">
+        Sign In
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- INFO -->
+
+<section class="other-articles">
+
+  <h1>The Importance of Oxygen</h1>
+
+  <p>
+    Medical Oxygen is an essential drug used in the
+    treatment of hypoxemia, pneumonia, COVID-19,
+    and emergency care.
+  </p>
+
+  <p>
+    Proper oxygen levels ensure that your organs
+    function efficiently and reduce fatigue.
+  </p>
+
+  <p>
+    <span>Important:</span>
+    Oxygen must always be prescribed by a medical
+    professional to avoid serious complications.
+  </p>
+
+</section>
+
+<!-- POSTS -->
+
+<h2 class="section-title">Health Insights</h2>
+
+<section class="card" id="posts-section">
+  <div id="postsContainer" class="posts-grid"></div>
+</section>
+
+<script>
+
+let posts =
+  JSON.parse(localStorage.getItem("oxytipsPosts")) || [];
+
+function renderPosts(){
+
+  const container =
+    document.getElementById("postsContainer");
+
+  container.innerHTML = "";
+
+  if(posts.length === 0){
+
+    container.innerHTML = `
+      <div class="empty">
+        No posts available yet.
+      </div>
+    `;
+
+    return;
+  }
+
+  posts.forEach(post => {
+
+    const card = document.createElement("div");
+
+    card.className = "post-card";
+
+    card.innerHTML = `
+
+      <div class="pst-container">
+
+        ${
+          post.image
+          ? `
+            <div>
+              <img src="${post.image}"
+              class="post-image">
+            </div>
+          `
+          : `
+            <div class="post-image"></div>
+          `
+        }
+
+        <div class="post-content">
+
+          <span class="post-category">
+            ${post.category || "Medical"}
+          </span>
+
+          <h3 class="post-title">
+            ${post.title}
+          </h3>
+
+          <p class="post-text">
+            ${post.content}
+          </p>
+
+          ${
+            post.video
+            ? `
+              <video controls class="post-video">
+                <source src="${post.video}" type="video/mp4">
+              </video>
+            `
+            : ""
+          }
+
+          <br><br>
+
+          <small>
+            Published: ${post.createdAt || "Recently"}
+          </small>
+
+        </div>
+
+      </div>
+
+    `;
+
+    container.appendChild(card);
+
+  });
+
+}
+
+renderPosts();
+
+</script>
+
+</body>
+</html>
