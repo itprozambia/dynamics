@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Oxytips | Medical Oxygen Awareness</title>
+<title>OxyTips | Medical Oxygen Awareness</title>
 
 <style>
 
@@ -26,7 +26,10 @@
   box-sizing:border-box;
 }
 
-html{
+html,
+body{
+  width:100%;
+  overflow-x:hidden;
   scroll-behavior:smooth;
 }
 
@@ -50,6 +53,7 @@ header{
 }
 
 nav{
+  width:100%;
   max-width:1200px;
   margin:auto;
   display:flex;
@@ -65,8 +69,10 @@ nav{
 }
 
 .logo img{
-  border-radius:50%;
+  width:60px;
+  height:60px;
   object-fit:cover;
+  border-radius:50%;
 }
 
 .company-name{
@@ -93,7 +99,7 @@ nav{
   content:"";
   position:absolute;
   left:0;
-  bottom:-5px;
+  bottom:-6px;
   width:0%;
   height:2px;
   background:var(--primary);
@@ -115,13 +121,14 @@ nav{
   background:var(--secondary);
 }
 
-/* MENU ICON */
+/* MENU TOGGLE */
 
 .menu-toggle{
   display:none;
   flex-direction:column;
   gap:5px;
   cursor:pointer;
+  z-index:1100;
 }
 
 .menu-toggle span{
@@ -140,28 +147,30 @@ nav{
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:60px 20px;
+  padding:80px 20px;
   background:
-  linear-gradient(rgba(15,118,110,0.75),
+  linear-gradient(rgba(15,118,110,0.7),
   rgba(15,23,42,0.75)),
   url("https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1400&auto=format&fit=crop");
+
   background-size:cover;
   background-position:center;
   color:white;
 }
 
 .hero-content{
+  width:100%;
   max-width:750px;
 }
 
 .hero h1{
   font-size:4rem;
-  margin-bottom:20px;
   line-height:1.1;
+  margin-bottom:20px;
 }
 
 .hero p{
-  font-size:1.2rem;
+  font-size:1.1rem;
   color:#e2e8f0;
   margin-bottom:35px;
 }
@@ -169,8 +178,8 @@ nav{
 .hero-buttons{
   display:flex;
   justify-content:center;
-  gap:20px;
   flex-wrap:wrap;
+  gap:18px;
 }
 
 .hero-buttons a{
@@ -200,9 +209,10 @@ nav{
   color:var(--primary);
 }
 
-/* INFO SECTION */
+/* INFO */
 
 .other-articles{
+  width:calc(100% - 40px);
   max-width:1000px;
   margin:80px auto;
   background:white;
@@ -212,15 +222,14 @@ nav{
 }
 
 .other-articles h1{
-  font-size:2.5rem;
-  margin-bottom:20px;
   color:var(--primary);
+  margin-bottom:20px;
+  font-size:2.5rem;
 }
 
 .other-articles p{
-  margin-bottom:18px;
-  font-size:1.05rem;
   color:var(--gray);
+  margin-bottom:18px;
 }
 
 .other-articles span{
@@ -230,27 +239,28 @@ nav{
 
 /* POSTS */
 
-.section-title{
-  text-align:center;
-  font-size:2.5rem;
-  margin-bottom:40px;
-  color:var(--primary);
-}
-
 .card{
+  width:100%;
   max-width:1200px;
   margin:auto;
   padding:20px;
 }
 
+.section-title{
+  text-align:center;
+  margin-bottom:30px;
+  color:var(--primary);
+  font-size:2.5rem;
+}
+
 .posts-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:30px;
 }
 
 .post-card{
-  background:var(--card);
+  background:white;
   border-radius:20px;
   overflow:hidden;
   box-shadow:var(--shadow);
@@ -258,14 +268,14 @@ nav{
 }
 
 .post-card:hover{
-  transform:translateY(-8px);
+  transform:translateY(-6px);
 }
 
 .post-image{
   width:100%;
-  min-height:300px;
+  height:230px;
   object-fit:cover;
-  background:#e2e8f0;
+  display:block;
 }
 
 .post-content{
@@ -278,14 +288,14 @@ nav{
   color:var(--primary);
   padding:6px 14px;
   border-radius:30px;
-  font-size:0.85rem;
+  font-size:0.8rem;
   font-weight:bold;
   margin-bottom:15px;
 }
 
 .post-title{
-  font-size:1.4rem;
   margin-bottom:12px;
+  font-size:1.4rem;
 }
 
 .post-text{
@@ -296,7 +306,6 @@ nav{
 .post-video{
   width:100%;
   border-radius:12px;
-  margin-top:10px;
 }
 
 small{
@@ -306,30 +315,23 @@ small{
 .empty{
   background:white;
   padding:40px;
-  border-radius:20px;
   text-align:center;
+  border-radius:20px;
   box-shadow:var(--shadow);
-  font-size:1.1rem;
 }
 
 /* MOBILE */
 
-@media(max-width:600px){
-
-  body{
-    overflow-x:hidden;
-  }
+@media(max-width:900px){
 
   .menu-toggle{
     display:flex;
-    z-index:1100;
   }
 
   .nav-links{
     position:fixed;
     top:0;
     right:0;
-    transform:translateX(100%);
     width:280px;
     max-width:80%;
     height:100vh;
@@ -338,68 +340,97 @@ small{
     align-items:flex-start;
     padding:100px 30px;
     gap:30px;
+    transform:translateX(100%);
     transition:0.4s ease;
     box-shadow:-10px 0 30px rgba(0,0,0,0.1);
-    z-index:1000;
   }
 
   .nav-links.active{
     transform:translateX(0);
   }
 
+  .hero{
+    padding:100px 20px;
+  }
+
   .hero h1{
-    font-size:2.6rem;
+    font-size:2.5rem;
   }
 
   .hero p{
     font-size:1rem;
   }
 
+  .hero-buttons{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .hero-buttons a{
+    width:220px;
+    text-align:center;
+  }
+
   .other-articles{
-    margin:50px 20px;
+    width:calc(100% - 30px);
     padding:30px 25px;
+    margin:50px auto;
   }
 
   .other-articles h1{
     font-size:2rem;
   }
 
+  .section-title{
+    font-size:2rem;
+  }
+
+  .posts-grid{
+    grid-template-columns:1fr;
+  }
+
 }
 
-
 </style>
-
 </head>
 
 <body>
 
 <header>
 
-  <nav>
+<nav>
 
-    <div class="logo">
-      <div class="image">
-        <img src="images/liqox.png" alt="" width="60" height="60" loading="lazy">
-      </div>
+<div class="logo">
 
-      <div class="company-name">OxyTips</div>
-    </div>
+<img src="images/liqox.png" alt="OxyTips Logo">
 
-    <div class="nav-links" id="navLinks">
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Devices</a>
-      <a href="#">Contact</a>
-      <a href="siup.html" class="SignUp">Sign Up</a>
-    </div>
+<div class="company-name">
+OxyTips
+</div>
 
-    <div class="menu-toggle" id="menuToggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+</div>
 
-  </nav>
+<div class="nav-links" id="navLinks">
+
+<a href="#">Home</a>
+<a href="#">About</a>
+<a href="#">Devices</a>
+<a href="#">Contact</a>
+<a href="siup.html" class="SignUp">
+Sign Up
+</a>
+
+</div>
+
+<div class="menu-toggle" id="menuToggle">
+
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+</nav>
 
 </header>
 
@@ -407,28 +438,31 @@ small{
 
 <section class="hero">
 
-  <div class="hero-content">
+<div class="hero-content">
 
-    <h1>Breathe Better. Live Healthier.</h1>
+<h1>
+Breathe Better. Live Healthier.
+</h1>
 
-    <p>
-      Your trusted guide to wellness, oxygen awareness,
-      and modern medical education.
-    </p>
+<p>
+Your trusted guide to wellness,
+oxygen awareness, and modern
+medical education.
+</p>
 
-    <div class="hero-buttons">
+<div class="hero-buttons">
 
-      <a href="acp.html" class="btn-primary">
-        Add Articles
-      </a>
+<a href="acp.html" class="btn-primary">
+Add Articles
+</a>
 
-      <a href="siip.html" class="btn-outline">
-        Sign In
-      </a>
+<a href="siip.html" class="btn-outline">
+Sign In
+</a>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
 
@@ -436,38 +470,42 @@ small{
 
 <section class="other-articles">
 
-  <h1>The Importance of Oxygen</h1>
+<h1>
+The Importance of Oxygen
+</h1>
 
-  <p>
-    Medical Oxygen is an essential drug used in the
-    treatment of hypoxemia, pneumonia, COVID-19,
-    and emergency care.
-  </p>
+<p>
+Medical Oxygen is an essential drug used
+in the treatment of hypoxemia, pneumonia,
+COVID-19, and emergency care.
+</p>
 
-  <p>
-    Proper oxygen levels ensure that your organs
-    function efficiently and reduce fatigue.
-  </p>
+<p>
+Proper oxygen levels ensure that your organs
+function efficiently and reduce fatigue.
+</p>
 
-  <p>
-    <span>Important:</span>
-    Oxygen must always be prescribed by a medical
-    professional to avoid serious complications.
-  </p>
+<p>
+<span>Important:</span>
+Oxygen must always be prescribed by a medical
+professional to avoid serious complications.
+</p>
 
 </section>
 
 <!-- POSTS -->
 
-<h2 class="section-title">Health Insights</h2>
+<h2 class="section-title">
+Health Insights
+</h2>
 
-<section class="card" id="posts-section">
-  <div id="postsContainer" class="posts-grid"></div>
+<section class="card">
+
+<div class="posts-grid" id="postsContainer"></div>
+
 </section>
 
 <script>
-
-/* MOBILE MENU */
 
 /* MOBILE MENU */
 
@@ -477,7 +515,7 @@ document.getElementById("menuToggle");
 const navLinks =
 document.getElementById("navLinks");
 
-menuToggle.addEventListener("click", (e) => {
+menuToggle.addEventListener("click",(e)=>{
 
   e.stopPropagation();
 
@@ -485,31 +523,31 @@ menuToggle.addEventListener("click", (e) => {
 
 });
 
-/* CLOSE MENU WHEN CLICKING OUTSIDE */
+/* CLOSE OUTSIDE */
 
-document.addEventListener("click", (e) => {
+document.addEventListener("click",(e)=>{
 
-  const clickedInsideMenu =
+  const insideMenu =
   navLinks.contains(e.target);
 
-  const clickedMenuButton =
+  const menuBtn =
   menuToggle.contains(e.target);
 
-  if(
-    !clickedInsideMenu &&
-    !clickedMenuButton
-  ){
+  if(!insideMenu && !menuBtn){
+
     navLinks.classList.remove("active");
+
   }
 
 });
 
-/* CLOSE MENU WHEN LINK IS CLICKED */
+/* CLOSE AFTER CLICKING LINK */
 
-document.querySelectorAll(".nav-links a")
-.forEach(link => {
+document
+.querySelectorAll(".nav-links a")
+.forEach(link=>{
 
-  link.addEventListener("click", () => {
+  link.addEventListener("click",()=>{
 
     navLinks.classList.remove("active");
 
@@ -520,7 +558,9 @@ document.querySelectorAll(".nav-links a")
 /* POSTS */
 
 let posts =
-JSON.parse(localStorage.getItem("oxytipsPosts")) || [];
+JSON.parse(
+localStorage.getItem("oxytipsPosts")
+) || [];
 
 function renderPosts(){
 
@@ -540,60 +580,63 @@ function renderPosts(){
     return;
   }
 
-  posts.forEach(post => {
+  posts.forEach(post=>{
 
-    const card = document.createElement("div");
+    const card =
+    document.createElement("div");
 
     card.className = "post-card";
 
     card.innerHTML = `
 
-      <div class="pst-container">
+      ${
+        post.image
+        ?
+        `
+        <img
+        src="${post.image}"
+        class="post-image">
+        `
+        :
+        `
+        <div class="post-image"></div>
+        `
+      }
+
+      <div class="post-content">
+
+        <span class="post-category">
+          ${post.category || "Medical"}
+        </span>
+
+        <h3 class="post-title">
+          ${post.title}
+        </h3>
+
+        <p class="post-text">
+          ${post.content}
+        </p>
 
         ${
-          post.image
-          ? `
-            <div>
-              <img src="${post.image}"
-              class="post-image">
-            </div>
+          post.video
+          ?
           `
-          : `
-            <div class="post-image"></div>
+          <video controls class="post-video">
+            <source
+            src="${post.video}"
+            type="video/mp4">
+          </video>
           `
+          :
+          ""
         }
 
-        <div class="post-content">
+        <br><br>
 
-          <span class="post-category">
-            ${post.category || "Medical"}
-          </span>
-
-          <h3 class="post-title">
-            ${post.title}
-          </h3>
-
-          <p class="post-text">
-            ${post.content}
-          </p>
-
-          ${
-            post.video
-            ? `
-              <video controls class="post-video">
-                <source src="${post.video}" type="video/mp4">
-              </video>
-            `
-            : ""
-          }
-
-          <br><br>
-
-          <small>
-            Published: ${post.createdAt || "Recently"}
-          </small>
-
-        </div>
+        <small>
+          Published:
+          ${post.createdAt || "Recently"}
+        </small>
 
       </div>
 
