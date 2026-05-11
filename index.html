@@ -1,161 +1,574 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oxytips</title>
-    <link rel="stylesheet" href="puplic.css">
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      .post-card:hover {
-        background-color: rgba(128, 128, 128, 0.027);
-        cursor: pointer;
-        transition: 0.5s, ease-in;
+<title>OxyTips | Medical Oxygen Awareness</title>
 
-      }
-      .pst-container {
-        display: grid;
-        grid-template-columns:600px 1fr;
-        gap: 30px;
-        font-family: Arial;
-      }
-      .pst-container p{
-        max-width: 80%;
-      }
-      .pst-container div {
-        margin-bottom: 30px;
-        padding: 10px;
-        align-items: center;
-      }
-      .pst-container img {
-        object-fit: cover;
-        max-width: 500px;
-      }
+<style>
 
-      .post-image{
+:root{
+  --primary:#0f766e;
+  --secondary:#14b8a6;
+  --dark:#0f172a;
+  --light:#ffffff;
+  --gray:#64748b;
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --shadow:0 10px 30px rgba(0,0,0,0.08);
+  --radius:18px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,
+body{
   width:100%;
-  max-height:400px;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+  line-height:1.6;
+}
+
+/* HEADER */
+
+header{
+  width:100%;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+nav{
+  width:100%;
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:15px 20px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo img{
+  width:60px;
+  height:60px;
   object-fit:cover;
-  background:#eee;
-  object-position: top;
+  border-radius:50%;
+}
+
+.company-name{
+  font-size:1.5rem;
+  font-weight:bold;
+  color:var(--primary);
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:25px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:var(--dark);
+  font-weight:600;
+  transition:0.3s;
+  position:relative;
+}
+
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0%;
+  height:2px;
+  background:var(--primary);
+  transition:0.3s;
+}
+
+.nav-links a:hover::after{
+  width:100%;
+}
+
+.SignUp{
+  background:var(--primary);
+  color:white !important;
+  padding:10px 18px;
+  border-radius:50px;
+}
+
+.SignUp:hover{
+  background:var(--secondary);
+}
+
+/* MENU TOGGLE */
+
+.menu-toggle{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+  z-index:1100;
+}
+
+.menu-toggle span{
+  width:28px;
+  height:3px;
+  background:var(--dark);
+  border-radius:10px;
+  transition:0.3s;
+}
+
+/* HERO */
+
+.hero{
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:80px 20px;
+  background:
+  linear-gradient(rgba(15,118,110,0.7),
+  rgba(15,23,42,0.75)),
+  url("images/body.png");
+
+  background-size:cover;
+  background-position:center;
+  color:white;
+}
+
+.hero-content{
+  width:100%;
+  max-width:750px;
+}
+
+.hero h1{
+  font-size:4rem;
+  line-height:1.1;
+  margin-bottom:20px;
+}
+
+.hero p{
+  font-size:1.1rem;
+  color:#e2e8f0;
+  margin-bottom:35px;
+}
+
+.hero-buttons{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:18px;
+}
+
+.hero-buttons a{
+  text-decoration:none;
+  padding:14px 28px;
+  border-radius:50px;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.btn-primary{
+  background:white;
+  color:var(--primary);
+}
+
+.btn-primary:hover{
+  transform:translateY(-4px);
+}
+
+.btn-outline{
+  border:2px solid white;
+  color:white;
+}
+
+.btn-outline:hover{
+  background:white;
+  color:var(--primary);
+}
+
+/* INFO */
+
+.other-articles{
+  width:calc(100% - 40px);
+  max-width:1000px;
+  margin:80px auto;
+  background:white;
+  padding:50px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+
+.other-articles h1{
+  color:var(--primary);
+  margin-bottom:20px;
+  font-size:2.5rem;
+}
+
+.other-articles p{
+  color:var(--gray);
+  margin-bottom:18px;
+}
+
+.other-articles span{
+  color:red;
+  font-weight:bold;
+}
+
+/* POSTS */
+
+.card{
+  width:100%;
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:30px;
+  color:var(--primary);
+  font-size:2.5rem;
+}
+
+.posts-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+
+.post-card{
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:0.3s;
+}
+
+.post-card:hover{
+  transform:translateY(-6px);
+}
+
+.post-image{
+  width:100%;
+  height:280px;
+  object-fit:cover;
+  display:block;
 }
 
 .post-content{
-  padding:18px;
+  padding:25px;
 }
 
 .post-category{
   display:inline-block;
-
-  color:rgb(46, 156, 96);
-  padding:6px 10px;
+  background:#ccfbf1;
+  color:var(--primary);
+  padding:6px 14px;
   border-radius:30px;
-  font-size:1.2rem;
-  margin-bottom:12px;
-  font-weight:600;
-}
-
-.post-title{
-  font-size:18px;
-  margin-bottom:12px;
-  color: rgb(255, 136, 0);
-}
-
-.post-text{
-  color:#2c3130;
-  line-height:1.6;
+  font-size:0.8rem;
+  font-weight:bold;
   margin-bottom:15px;
 }
 
-@media(max-width:700px){
+.post-title{
+  margin-bottom:12px;
+  font-size:1.4rem;
+}
 
-  .pst-container{
+.post-text{
+  color:var(--gray);
+  margin-bottom:20px;
+}
+
+.post-video{
+  width:100%;
+  border-radius:12px;
+}
+
+small{
+  color:gray;
+}
+
+.empty{
+  background:white;
+  padding:40px;
+  text-align:center;
+  border-radius:20px;
+  box-shadow:var(--shadow);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .menu-toggle{
+    display:flex;
+  }
+
+  .nav-links{
+    position:fixed;
+    top:0;
+    right:0;
+    width:280px;
+    max-width:80%;
+    height:100vh;
+    background:white;
+    flex-direction:column;
+    align-items:flex-start;
+    padding:100px 30px;
+    gap:30px;
+    transform:translateX(100%);
+    transition:0.4s ease;
+    box-shadow:-10px 0 30px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.active{
+    transform:translateX(0);
+  }
+
+  .hero{
+    padding:100px 20px;
+  }
+
+  .hero h1{
+    font-size:2.5rem;
+  }
+
+  .hero p{
+    font-size:1rem;
+  }
+
+  .hero-buttons{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .hero-buttons a{
+    width:220px;
+    text-align:center;
+  }
+
+  .other-articles{
+    width:calc(100% - 30px);
+    padding:30px 25px;
+    margin:50px auto;
+  }
+
+  .other-articles h1{
+    font-size:2rem;
+  }
+
+  .section-title{
+    font-size:2rem;
+  }
+
+  .posts-grid{
     grid-template-columns:1fr;
   }
 
- p {
-
-  width:100%;
-}
-.menu-toggle {
-        display: block;
-    }
-img {
-  border-radius:10px;
 }
 
-small {
-      padding:10px;
-      border-radius:5px;
-      display:block;
-      background-color:#218686;
-      color:white;
-    }
-
-}
-
-    </style>
-
+</style>
 </head>
+
 <body>
-  <header>
-    <nav id="nav">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Devices</a>
-        <a href="#">Contact</a>
-        <a href="siup.html" class="SignUp" style="color: rgb(37, 145, 127);">Sign Up</a>
-    </nav>
+
+<header>
+
+<nav>
+
+<div class="logo">
+
+<img src="images/liqox.png" alt="OxyTips Logo">
+
+<div class="company-name">
+OxyTips
+</div>
+
+</div>
+
+<div class="nav-links" id="navLinks">
+
+<a href="#">Home</a>
+<a href="#">About</a>
+<a href="#">Devices</a>
+<a href="#">Contact</a>
+<a href="siup.html" class="SignUp">
+Sign Up
+</a>
+
+</div>
+
+<div class="menu-toggle" id="menuToggle">
+
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+</nav>
+
 </header>
 
-<div class="hero">
-    <div>
-        <h1>Breathe Better. Live Healthier.</h1>
-        <p>Your trusted guide to wellness and medical awareness.</p>
+<!-- HERO -->
 
-        <div class="hero-buttons">
-            <a href="acp.html" class="btn-primary">Explore Articles</a>
-            <a href="siip.html" class="btn-outline">Sign in</a>
-              <a href="newer.html" class="btn-outline">Change layout</a>
-        </div>
-    </div>
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>
+Breathe Better. Live Healthier.
+</h1>
+
+<p>
+Your trusted guide to wellness,
+oxygen awareness, and modern
+medical education.
+</p>
+
+<div class="hero-buttons">
+
+<a href="acp.html" class="btn-primary">
+Add Articles
+</a>
+
+<a href="siip.html" class="btn-outline">
+Sign In
+</a>
+
 </div>
 
-<div id="main-container">
-
-<div class="other-articles">
-    <h1>The Importance of Oxygen</h1>
-      
-            <p>Medical Oxygen is an essential drug used in the treatment of hypoxemia, pneumonia, COVID-19, and emergency care.</p>
-            <p>Proper oxygen levels ensure that your organs function efficiently and reduce fatigue.</p>
-            <p><span>Important:</span> Oxygen must always be prescribed by a medical professional to avoid serious complications.</p>
-
-    </div>
 </div>
-<!--End of other articles-->
-<h2 class="section-title">Health Insights</h2>
 
+</section>
 
+<!-- INFO -->
 
+<section class="other-articles">
 
-     <section class="card" id="posts-section">
+<h1>
+The Importance of Oxygen
+</h1>
 
-      <div id="postsContainer" class="posts-grid"></div>
+<p>
+Medical Oxygen is an essential drug used
+in the treatment of hypoxemia, pneumonia,
+COVID-19, and emergency care.
+</p>
 
-    </section>
+<p>
+Proper oxygen levels ensure that your organs
+function efficiently and reduce fatigue.
+</p>
+
+<p>
+<span>Important:</span>
+Oxygen must always be prescribed by a medical
+professional to avoid serious complications.
+</p>
+
+</section>
+
+<!-- POSTS -->
+
+<h2 class="section-title">
+Health Insights
+</h2>
+
+<section class="card">
+
+<div class="posts-grid" id="postsContainer"></div>
+
+</section>
+
 <script>
 
-let posts = JSON.parse(localStorage.getItem("oxytipsPosts")) || [];
+/* MOBILE MENU */
+
+const menuToggle =
+document.getElementById("menuToggle");
+
+const navLinks =
+document.getElementById("navLinks");
+
+menuToggle.addEventListener("click",(e)=>{
+
+  e.stopPropagation();
+
+  navLinks.classList.toggle("active");
+
+});
+
+/* CLOSE OUTSIDE */
+
+document.addEventListener("click",(e)=>{
+
+  const insideMenu =
+  navLinks.contains(e.target);
+
+  const menuBtn =
+  menuToggle.contains(e.target);
+
+  if(!insideMenu && !menuBtn){
+
+    navLinks.classList.remove("active");
+
+  }
+
+});
+
+/* CLOSE AFTER CLICKING LINK */
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(link=>{
+
+  link.addEventListener("click",()=>{
+
+    navLinks.classList.remove("active");
+
+  });
+
+});
+
+/* POSTS */
+
+let posts =
+JSON.parse(
+localStorage.getItem("oxytipsPosts")
+) || [];
 
 function renderPosts(){
 
   const container =
-    document.getElementById("postsContainer");
-
-  const postCount =
-    //document.getElementById("postCount");
+  document.getElementById("postsContainer");
 
   container.innerHTML = "";
+
   if(posts.length === 0){
 
     container.innerHTML = `
@@ -167,23 +580,33 @@ function renderPosts(){
     return;
   }
 
-  posts.forEach(post => {
+  posts.forEach(post=>{
 
-    const card = document.createElement("div");
+    const card =
+    document.createElement("div");
+
     card.className = "post-card";
 
-    card.innerHTML = `<div class="pst-container">
+    card.innerHTML = `
+
       ${
         post.image
-        ? `<div><img src="${post.image}" class="post-image"></div>`
-     
-        : `<div class="post-image"></div>`
+        ?
+        `
+        <img
+        src="${post.image}"
+        class="post-image">
+        `
+        :
+        `
+        <div class="post-image"></div>
+        `
       }
 
       <div class="post-content">
 
         <span class="post-category">
-          ${post.category}
+          ${post.category || "Medical"}
         </span>
 
         <h3 class="post-title">
@@ -196,97 +619,38 @@ function renderPosts(){
 
         ${
           post.video
-          ? `
-            <video controls class="post-video">
-              <source src="${post.video}" type="video/mp4">
-            </video>
+          ?
           `
-          : ""
+          <video controls class="post-video">
+            <source
+            src="${post.video}"
+            type="video/mp4">
+          </video>
+          `
+          :
+          ""
         }
 
         <br><br>
 
         <small>
-	<p><b>Published: </b>${post.createdAt}</p>
-        
+          Published:
+          ${post.createdAt || "Recently"}
         </small>
 
-        <br><br>
       </div>
-      </div>
+
     `;
 
     container.appendChild(card);
-  });
-}
 
-/* MEDIA LIBRARY */
-function renderMedia(){
-
-  const mediaGrid =
-    document.getElementById("mediaGrid");
-
-  const mediaCount =
-    document.getElementById("mediaCount");
-
-  mediaGrid.innerHTML = "";
-
-  let count = 0;
-
-  posts.forEach(post => {
-
-    if(post.image){
-
-      count++;
-
-      mediaGrid.innerHTML += `
-        <img src="${post.image}">
-      `;
-    }
-
-    if(post.video){
-
-      count++;
-
-      mediaGrid.innerHTML += `
-        <video controls>
-          <source src="${post.video}" type="video/mp4">
-        </video>
-      `;
-    }
   });
 
-  //mediaCount.textContent = count;
-
-  if(count === 0){
-
-    mediaGrid.innerHTML = `
-      <div class="empty">
-        No media uploaded yet.
-      </div>
-    `;
-  }
 }
 
-/* DELETE POST */
-function deletePost(id){
-
-  if(confirm("Delete this post?")){
-
-    posts = posts.filter(post => post.id !== id);
-
-    localStorage.setItem(
-      "oxytipsPosts",
-      JSON.stringify(posts)
-    );
-
-    renderPosts();
-    renderMedia();
-  }
-}
-  renderPosts();
-
+renderPosts();
 
 </script>
+
 </body>
 </html>
