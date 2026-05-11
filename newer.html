@@ -316,15 +316,22 @@ small{
 
 @media(max-width:900px){
 
+  body{
+    overflow-x:hidden;
+  }
+
   .menu-toggle{
     display:flex;
+    z-index:1100;
   }
 
   .nav-links{
     position:fixed;
     top:0;
-    right:-100%;
+    right:0;
+    transform:translateX(100%);
     width:280px;
+    max-width:80%;
     height:100vh;
     background:white;
     flex-direction:column;
@@ -333,10 +340,11 @@ small{
     gap:30px;
     transition:0.4s ease;
     box-shadow:-10px 0 30px rgba(0,0,0,0.1);
+    z-index:1000;
   }
 
   .nav-links.active{
-    right:0;
+    transform:translateX(0);
   }
 
   .hero h1{
@@ -358,29 +366,6 @@ small{
 
 }
 
-@media(max-width:600px){
-
-  .hero{
-    min-height:75vh;
-  }
-
-  .hero h1{
-    font-size:2.1rem;
-  }
-
-  .hero-buttons{
-    flex-direction:column;
-  }
-
-  .hero-buttons a{
-    width:100%;
-  }
-
-  .section-title{
-    font-size:2rem;
-  }
-
-}
 
 </style>
 
@@ -484,14 +469,52 @@ small{
 
 /* MOBILE MENU */
 
+/* MOBILE MENU */
+
 const menuToggle =
 document.getElementById("menuToggle");
 
 const navLinks =
 document.getElementById("navLinks");
 
-menuToggle.addEventListener("click", () => {
+menuToggle.addEventListener("click", (e) => {
+
+  e.stopPropagation();
+
   navLinks.classList.toggle("active");
+
+});
+
+/* CLOSE MENU WHEN CLICKING OUTSIDE */
+
+document.addEventListener("click", (e) => {
+
+  const clickedInsideMenu =
+  navLinks.contains(e.target);
+
+  const clickedMenuButton =
+  menuToggle.contains(e.target);
+
+  if(
+    !clickedInsideMenu &&
+    !clickedMenuButton
+  ){
+    navLinks.classList.remove("active");
+  }
+
+});
+
+/* CLOSE MENU WHEN LINK IS CLICKED */
+
+document.querySelectorAll(".nav-links a")
+.forEach(link => {
+
+  link.addEventListener("click", () => {
+
+    navLinks.classList.remove("active");
+
+  });
+
 });
 
 /* POSTS */
